@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://json.schemastore.org/yamllint.json": "file:///Users/ecchanger/workspace/kubernetes-in-action/Chapter04/ec-kubia-liveness-probe.yaml"
-    }
-}
