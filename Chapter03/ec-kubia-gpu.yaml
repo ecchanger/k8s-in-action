@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ec-pod-kubia-gpu
+spec:
+  containers:
+  - image: luksa/kubia
+    name: ec-c-kubia-gpu
+  nodeSelector:
+    gpu: "true"

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ec-pv-mongodb-nas-csi-2
+  labels:
+    alicloud-pvname: ec-pv-mongodb-nas-csi-2
+spec:
+  capacity:
+    storage: 2Gi #size
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: nasplugin.csi.alibabacloud.com
+    volumeAttributes:
+      path: /mongodb
+      server: 085ec4bc49-snx47.cn-hangzhou.nas.aliyuncs.com
+      vers: '4.0'
+    volumeHandle: csi-nas-ts-ack
+  storageClassName: nas
+  volumeMode: Filesystem
