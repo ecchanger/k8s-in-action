@@ -14,3 +14,6 @@ spec:
       containers:
       - image: luksa/kubia:v3
         name: nodejs
+  selector:
+    matchLabels:
+      app: kubia

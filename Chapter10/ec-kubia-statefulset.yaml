@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  clusterIP: None
+  selector:
+    app: eckubia
+  ports:
+    - port: 80
+      name: http
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ec-ss-eckubia
+spec:
+  selector:
+    matchLabels:
+      app: eckubia
+  serviceName: kubia
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: eckubia
+    spec:
+      containers:
+        - name: eckubia
+          image: luksa/kubia-pet
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - mountPath: /var/data
+              name: data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 1Mi
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: alibabacloud-cnfs-nas

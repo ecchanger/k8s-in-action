@@ -1,7 +1,7 @@
-apiVersion: apps/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: kubia
+  name: kubia-v1
 spec:
   replicas: 3
   template:
@@ -11,11 +11,8 @@ spec:
         app: kubia
     spec:
       containers:
-      - image: luksa/kubia:v1
-        name: nodejs
-  selector:
-    matchLabels:
-      app: kubia
+        - image: luksa/kubia:v1
+          name: nodejs
 ---
 apiVersion: v1
 kind: Service
@@ -26,5 +23,5 @@ spec:
   selector:
     app: kubia
   ports:
-  - port: 80
-    targetPort: 8080
+    - port: 80
+      targetPort: 8080
