@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-test-pod
+spec:
+  serviceAccountName: foo
+  containers:
+  - name: curl
+    image: curlimages/curl
+    imagePullPolicy: IfNotPresent
+    command:
+    - /bin/sh
+    - -c
+    - "sleep 3600"
