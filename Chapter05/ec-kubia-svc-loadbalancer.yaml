@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ec-svc-kubia-loadbalancer
+  annotations:
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-id: lb-bp1lz95xqvzo7hogpe6wd
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-weight: '0'
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-vgroup-port: 'rsp-bp1f9pfg0xev1:80'
+                        
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: kubia

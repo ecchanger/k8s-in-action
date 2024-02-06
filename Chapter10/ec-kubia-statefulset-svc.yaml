@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ec-svc-ss-eckubia
+spec:
+  selector:
+    app: eckubia
+  ports:
+    - port: 80
+      targetPort: 8080

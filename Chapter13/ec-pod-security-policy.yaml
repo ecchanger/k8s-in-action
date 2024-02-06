@@ -1,0 +1,26 @@
+apiVersion: extensions/v1
+kind: PodSecurityPolicy
+metadata:
+  name: default
+spec:
+  hostIPC: false
+  hostPID: false
+  hostNetwork: false
+  hostPorts:
+    - max: 11000
+      min: 10000
+    - max: 14000
+      min: 13000
+  privileged: false
+  readOnlyRootFilesystem: false
+  fsGroup:
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  volumes:
+    - "*"
+    

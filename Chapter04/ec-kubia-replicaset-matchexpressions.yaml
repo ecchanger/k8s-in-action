@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ec-rs-kubia
+spec:
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - kubia
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+        - name: ec-c-kubia
+          image: luksa/kubia
